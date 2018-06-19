@@ -1,5 +1,6 @@
 package com.baeldung.graphql.schema;
 
+import com.baeldung.graphql.mutation.RootMutation;
 import graphql.annotations.GraphQLAnnotations;
 import graphql.schema.GraphQLSchema;
 
@@ -14,7 +15,7 @@ public class UserSchema {
 
     public UserSchema() throws IllegalAccessException, NoSuchMethodException, InstantiationException {
         schema = newSchema().query(GraphQLAnnotations.object(UserQuery.class))
-            .mutation(GraphQLAnnotations.object(UserMutation.class))
+            .mutation(GraphQLAnnotations.object(RootMutation.class))
             .build();
     }
 

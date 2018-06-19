@@ -1,4 +1,4 @@
-#GraphQL-Java nested mutations
+# GraphQL-Java nested mutations
 
 Showing how to make nested mutations with [graphql-java](https://github.com/graphql-java/graphql-java) and [graphql-annotations](https://github.com/graphql-java/graphql-java-annotations).
 

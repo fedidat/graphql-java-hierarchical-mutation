@@ -51,6 +51,6 @@ public class UserHandler implements Handler {
     }
 
     public static List<User> getUsers(DataFetchingEnvironment env) {
-        return ((UserHandler) env.getSource()).getUsers();
+        return UserHandler.getUsers();
     }
 }

@@ -14,10 +14,9 @@ import java.util.Optional;
 
 import static com.baeldung.graphql.handler.UserHandler.getUsers;
 
-@GraphQLName(SchemaUtils.MUTATION)
 public class UserMutation {
     @GraphQLField
-    public static User createUser(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.NAME) final String name, @NotNull @GraphQLName(SchemaUtils.EMAIL) final String email, @NotNull @GraphQLName(SchemaUtils.AGE) final String age) {
+    public static User create(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.NAME) final String name, @NotNull @GraphQLName(SchemaUtils.EMAIL) final String email, @NotNull @GraphQLName(SchemaUtils.AGE) final String age) {
         List<User> users = getUsers(env);
         final User user = new User(name, email, Integer.valueOf(age));
         users.add(user);
@@ -25,7 +24,7 @@ public class UserMutation {
     }
 
     @GraphQLField
-    public static User updateUser(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.ID) final String id, @NotNull @GraphQLName(SchemaUtils.NAME) final String name, @NotNull @GraphQLName(SchemaUtils.EMAIL) final String email,
+    public static User update(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.ID) final String id, @NotNull @GraphQLName(SchemaUtils.NAME) final String name, @NotNull @GraphQLName(SchemaUtils.EMAIL) final String email,
         @NotNull @GraphQLName(SchemaUtils.AGE) final String age) {
         final Optional<User> user = getUsers(env).stream()
             .filter(c -> c.getId() == Long.parseLong(id))
@@ -43,7 +42,7 @@ public class UserMutation {
     }
 
     @GraphQLField
-    public static User deleteUser(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.ID) final String id) {
+    public static User delete(final DataFetchingEnvironment env, @NotNull @GraphQLName(SchemaUtils.ID) final String id) {
         final List<User> users = getUsers(env);
         final Optional<User> user = users.stream()
             .filter(c -> c.getId() == Long.parseLong(id))
